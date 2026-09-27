@@ -25,4 +25,29 @@ public class Ball {
         y += vy;
     }
 
+    public void bounceOffPeg(double pegX, double pegY, int pegRadius) {
+        double dx = x - pegX;
+        double dy = y - pegY;
+        double distance = Math.sqrt(dx*dy + dy*dy);
+
+        if (distance < radius + pegRadius) {
+            vy = -Math.abs(vy) * 0.7;
+
+            vx += (Math.random() - 0.5) * 2;
+        }
+    }
+
+    public void draw(Graphics g) {
+        g.setColor(Color.RED);
+        g.fillOval((int)(x - radius), (int)(y - radius), radius * 2, radius * 2);
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
 }
